@@ -30,10 +30,23 @@ public class BookRepositoryImpl implements BookRepository {
         Number key = keyHolder.getKey();
 
         if (key == null) {
-            throw new RuntimeException("update failed");
+            throw new RuntimeException("add failed");
         }
 
         return key.longValue();
+    }
+
+    public long updateBook(long id, String title) {
+        String sql = "update Book set title=? where id=?";
+
+        jdbcTemplate.update(connection -> {
+            PreparedStatement ps = connection.prepareStatement(sql);
+            ps.setString(1, title);
+            ps.setLong(2, id);
+            return ps;
+        });
+
+        return id;
     }
 
     public Book getBookById(long id) {

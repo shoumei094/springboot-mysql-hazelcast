@@ -20,6 +20,11 @@ public class BookController {
         bookService.addBook(title);
     }
 
+    @GetMapping(path = "/update/{id}")
+    public void updateBook(@PathVariable long id, @RequestParam(name = "title") String title) {
+        bookService.updateBook(id, title);
+    }
+
     @GetMapping(path = "/{id}")
     public Book getBookById(@PathVariable long id) {
         return bookService.getBookById(id);

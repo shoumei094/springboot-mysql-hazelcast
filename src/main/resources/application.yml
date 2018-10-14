@@ -1,5 +1,11 @@
 spring:
+
   datasource:
     url: jdbc:mysql://localhost:3306/db
     username: springuser
     password: aaaaaa
+
+  cache:
+    type: jcache
+    jcache:
+      provider: com.hazelcast.cache.impl.HazelcastServerCachingProvider

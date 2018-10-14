@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hazelcast
+        xsi:schemaLocation="http://www.hazelcast.com/schema/config http://www.hazelcast.com/schema/config/hazelcast-config.xsd"
+        xmlns="http://www.hazelcast.com/schema/config"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+    <group>
+        <name>development</name>
+    </group>
+
+    <management-center enabled="true">http://localhost:9999/mancenter</management-center>
+
+    <cache name="book">
+        <key-type class-name="java.lang.Long" />
+        <value-type class-name="lol.shomei.entity.Book" />
+    </cache>
+
+    <cache name="books" />
+
+</hazelcast>

@@ -8,6 +8,8 @@ public interface BookRepository {
 
     long addBook(String title);
 
+    long updateBook(long id, String title);
+
     Book getBookById(long id);
 
     List<Book> getAllBooks();

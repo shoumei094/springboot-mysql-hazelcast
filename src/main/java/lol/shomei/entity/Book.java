@@ -1,6 +1,8 @@
 package lol.shomei.entity;
 
-public class Book {
+import java.io.Serializable;
+
+public class Book implements Serializable {
 
     public long id;
 
