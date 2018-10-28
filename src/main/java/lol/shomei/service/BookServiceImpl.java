@@ -3,7 +3,6 @@ package lol.shomei.service;
 import lol.shomei.entity.Book;
 import lol.shomei.repository.BookRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.CachePut;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
@@ -32,8 +31,7 @@ public class BookServiceImpl implements BookService {
         return bookRepository.addBook(title);
     }
 
-    @CachePut(cacheNames = "book", key = "#id")
-    @CacheEvict(cacheNames = "books", allEntries = true)
+    @CachePut(value = "book", key = "#id")
     public Book updateBook(long id, String title) {
         if (StringUtils.isEmpty(title)) {
             throw new RuntimeException("title cannot be null");
@@ -54,12 +52,11 @@ public class BookServiceImpl implements BookService {
         return book;
     }
 
-    @Cacheable(cacheNames = "book", key = "#id")
+    @Cacheable("book")
     public Book getBookById(long id) {
         return bookRepository.getBookById(id);
     }
 
-    @Cacheable(cacheNames = "books")
     public List<Book> getAllBooks() {
         return bookRepository.getAllBooks();
     }

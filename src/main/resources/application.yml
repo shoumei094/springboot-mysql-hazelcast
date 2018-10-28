@@ -6,6 +6,11 @@ spring:
     password: aaaaaa
 
   cache:
-    type: jcache
-    jcache:
-      provider: com.hazelcast.cache.impl.HazelcastServerCachingProvider
+    type: hazelcast
+
+logging:
+
+  level:
+    org:
+      springframework:
+        web: DEBUG
